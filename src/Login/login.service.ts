@@ -31,11 +31,13 @@ export class LoginService {
 
     async findUser(password: string): Promise<loginUsuario> {
 
-        let result = await this.loginRepository.findOne({ password })
+        let result = await this.loginRepository.findOne({password})
+        console.log(result)
+        console.log(password)
 
         if (result != null) {
 
-            const token = await this.AuthService.createToken(password.toString());
+            const token = await this.AuthService.createToken(password);
             console.log(token)
 
         }
